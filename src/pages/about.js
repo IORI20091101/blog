@@ -3,11 +3,11 @@ import React from "react"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Image from "gatsby-image"
+// import Image from "gatsby-image"
 
 export default function About({ data, location }) {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const sweet = data?.sweet?.childImageSharp?.fixed
+  // const sweet = data?.sweet?.childImageSharp?.fixed
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
@@ -18,7 +18,7 @@ export default function About({ data, location }) {
 
         <p>
           Hello,我是toshiba,一个<b>web前端开发工程师</b>,目前就职于
-          <a target="_blank" href="https://www.longdai.com">
+          <a rel="noreferrer" target="_blank" href="https://www.longdai.com">
             龙贷在线投资(北京)有限公司
           </a>
           ,从事该网站前端的日常维护和开发,该网站是2014年3月成立的互联网金融类企业。
@@ -30,17 +30,17 @@ export default function About({ data, location }) {
         <p>维护和开发过的项目:</p>
         <ul class="li">
           <li>
-            <a href="https://www.longdai.com/" target="_blank">
+            <a rel="noreferrer" href="https://www.longdai.com/" target="_blank">
               龙贷
             </a>
           </li>
           <li>
-            <a href="http://www.labi.com/home" target="_blank">
+            <a rel="noreferrer" href="http://www.labi.com/home" target="_blank">
               蜡笔同步
             </a>
           </li>
           <li>
-            <a href="http://dig.chouti.com/" target="_blank">
+            <a rel="noreferrer" href="http://dig.chouti.com/" target="_blank">
               抽屉新热榜
             </a>
           </li>
@@ -78,25 +78,25 @@ export default function About({ data, location }) {
         <ul class="li">
           <li>
             Email:
-            <a href="mailto:sdzzlyjy@gmail.com" target="_blank">
+            <a rel="noreferrer" href="mailto:sdzzlyjy@gmail.com" target="_blank">
               sdzzlyjy@gmail.com
             </a>
           </li>
           <li>
             GitHub:
-            <a href="https://github.com/IORI20091101" target="_blank">
+            <a rel="noreferrer" href="https://github.com/IORI20091101" target="_blank">
               https://github.com/IORI20091101
             </a>
           </li>
           <li>
             Telegram:
-            <a href="https://t.me/donduffy" target="_blank">
+            <a rel="noreferrer" href="https://t.me/donduffy" target="_blank">
               https://t.me/donduffy
             </a>
           </li>
           <li>
             Twitter:
-            <a href="https://twitter.com/iori20091101" target="_blank">
+            <a rel="noreferrer" href="https://twitter.com/iori20091101" target="_blank">
               https://twitter.com/iori20091101
             </a>
           </li>
