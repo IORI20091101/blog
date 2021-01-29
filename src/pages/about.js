@@ -3,6 +3,7 @@ import React from "react"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { graphql } from "gatsby"
 // import Image from "gatsby-image"
 
 export default function About({ data, location }) {
@@ -78,13 +79,21 @@ export default function About({ data, location }) {
         <ul class="li">
           <li>
             Email:
-            <a rel="noreferrer" href="mailto:sdzzlyjy@gmail.com" target="_blank">
+            <a
+              rel="noreferrer"
+              href="mailto:sdzzlyjy@gmail.com"
+              target="_blank"
+            >
               sdzzlyjy@gmail.com
             </a>
           </li>
           <li>
             GitHub:
-            <a rel="noreferrer" href="https://github.com/IORI20091101" target="_blank">
+            <a
+              rel="noreferrer"
+              href="https://github.com/IORI20091101"
+              target="_blank"
+            >
               https://github.com/IORI20091101
             </a>
           </li>
@@ -96,7 +105,11 @@ export default function About({ data, location }) {
           </li>
           <li>
             Twitter:
-            <a rel="noreferrer" href="https://twitter.com/iori20091101" target="_blank">
+            <a
+              rel="noreferrer"
+              href="https://twitter.com/iori20091101"
+              target="_blank"
+            >
               https://twitter.com/iori20091101
             </a>
           </li>
