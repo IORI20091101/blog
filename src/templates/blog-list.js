@@ -6,14 +6,15 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
-  const { currentPage, numPages } = this.props.pageContext
+  const { currentPage, numPages } = pageContext
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
-  const prevPage = currentPage - 1 === 1 ? "/" : (currentPage - 1).toString()
-  const nextPage = (currentPage + 1).toString()
+  const prevPage =
+    currentPage - 1 === 1 ? "/" : "/" + (currentPage - 1).toString()
+  const nextPage = "/" + (currentPage + 1).toString()
 
   return (
     <Layout location={location} title={siteTitle}>

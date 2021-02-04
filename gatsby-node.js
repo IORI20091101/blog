@@ -1,4 +1,5 @@
 const path = require(`path`)
+const { kebabCase } = require("lodash")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -6,14 +7,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const tagTemplate = path.resolve("src/templates/tags.js")
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
+        postsRemark: allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
+          limit: 2000
         ) {
           edges {
             node {
@@ -24,6 +26,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                 title
               }
             }
+          }
+        }
+        tagsGroup: allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___tags) {
+            fieldValue
           }
         }
       }
@@ -38,7 +45,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.postsRemark.edges
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -62,7 +69,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
 
       // Create blog post list pages
-      const postsPerPage = 2
+      const postsPerPage = 20
       const numPages = Math.ceil(posts.length / postsPerPage)
 
       Array.from({ length: numPages }).forEach((_, i) => {
@@ -76,6 +83,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             currentPage: i + 1,
           },
         })
+      })
+    })
+  }
+
+  const tags = result.data.tagsGroup.group
+  if (tags.length > 0) {
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${kebabCase(tag.fieldValue)}/`,
+        component: tagTemplate,
+        context: {
+          tag: tag.fieldValue,
+        },
       })
     })
   }

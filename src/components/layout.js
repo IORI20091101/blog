@@ -25,6 +25,7 @@ const Layout = ({ location, title, children }) => {
         <ul style={styles}>
           <ListLink to="/">Home</ListLink>
           <ListLink to="/about/">About</ListLink>
+          <ListLink to="/tags/">Tags</ListLink>
           <ListLink to="/contact/">Contact</ListLink>
         </ul>
       </div>
@@ -38,6 +39,7 @@ const Layout = ({ location, title, children }) => {
         <ul style={styles}>
           <ListLink to="/">Home</ListLink>
           <ListLink to="/about/">About</ListLink>
+          <ListLink to="/tags/">Tags</ListLink>
           <ListLink to="/contact/">Contact</ListLink>
         </ul>
       </div>
