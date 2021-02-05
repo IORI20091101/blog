@@ -8,7 +8,6 @@ import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 
 const Tags = ({ location, pageContext, data }) => {
-  const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   console.log(edges)
   console.log(totalCount)

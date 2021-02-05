@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import { Disqus } from "gatsby-plugin-disqus"
+
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -9,6 +11,8 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+
+  console.log(post.tableOfContents)
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -60,6 +64,16 @@ const BlogPostTemplate = ({ data, location }) => {
           </li>
         </ul>
       </nav>
+      <Disqus
+        config={{
+          /* Replace PAGE_URL with your post's canonical URL variable */
+          url: location.href,
+          /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+          identifier: post.id,
+          /* Replace PAGE_TITLE with the title of the page */
+          title: post.frontmatter.title,
+        }}
+      />
     </Layout>
   )
 }
@@ -114,8 +128,9 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(pruneLength: 500)
       html
+      tableOfContents(pathToSlugField: "frontmatter.path")
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
