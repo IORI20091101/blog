@@ -117,6 +117,11 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+          html
+          headings {
+            depth
+            value
+          }
           frontmatter {
             date(formatString: "DD MMMM, YYYY")
             title
