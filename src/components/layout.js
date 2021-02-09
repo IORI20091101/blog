@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 
 const styles = {}
@@ -12,6 +12,34 @@ const ListLink = props => (
 )
 
 const Layout = ({ location, title, children }) => {
+  let localTheme = localStorage.getItem("theme")
+  let defaultTheme = "light"
+  let currentTheme = defaultTheme
+
+  if (localTheme) {
+    if (localTheme === "dark" || localTheme === "light") {
+      currentTheme = localTheme
+    }
+  } else if (window.matchMedia) {
+    console.log(1245665)
+    let prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+    if (prefersDarkMode) {
+      currentTheme = "dark"
+    } else {
+      currentTheme = "light"
+    }
+  } else {
+    // default light
+    currentTheme = defaultTheme
+  }
+  console.log(currentTheme)
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.documentElement.className = currentTheme + "-theme"
+  })
+
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header

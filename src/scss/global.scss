@@ -1,0 +1,55 @@
+// @media screen and (prefers-color-scheme: dark) {
+//   :root {
+//     --linkColor: #ec9bab;
+//     --fontColor: #d2d2d2;
+//     --codeBlock: #3c495b;
+//     --code: #c3c7cb;
+//     --divider: #3e4b5e;
+//     --backgroundColor: #231b30;
+
+//     --hrBorderColor: #58606b;
+//     --hrBgColor: none;
+//     --hrBorderWidth: 1px;
+
+//     --main: #f3f3f3;
+//     --light: #ececec;
+//     --lighter: #666666;
+//     --border: #e6e6e6;
+//     --bg: #3a3e4a;
+//     /* --bg: #333333; */
+//   }
+// }
+// @media screen and (prefers-color-scheme: light) {
+//   :root {
+//     --linkColor: #683741;
+//     --fontColor: hsl(284, 20%, 30%);
+//     --codeBlock: #3c495b;
+//     --code: #c3c7cb;
+//     --divider: #eee;
+//     --backgroundColor: #ffffff;
+
+//     --hrBorderColor: #231b30;
+//     --hrBgColor: #d1dce5;
+//     --hrBorderWidth: 0px;
+
+//     --main: #333;
+//     --light: #666;
+//     --lighter: #f3f3f3;
+//     --border: #e6e6e6;
+//     --bg: #ffffff;
+//   }
+// }
+
+// body {
+//   background-color: var(--bg);
+//   color: var(--main);
+//   transition: all 0.5s ease-in-out;
+// }
+
+// hr {
+//   height: 0px;
+//   border-style: inset;
+//   border-width: var(--hrBorderWidth);
+//   border-color: var(--hrBorderColor);
+//   background-color: var(--hrBgColor);
+// }
