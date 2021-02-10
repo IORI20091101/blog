@@ -16,6 +16,7 @@ const Layout = ({ location, title, children }) => {
   let defaultTheme = "light"
   let currentTheme = defaultTheme
 
+  console.log("localTheme", localTheme)
   if (localTheme) {
     if (localTheme === "dark" || localTheme === "light") {
       currentTheme = localTheme
