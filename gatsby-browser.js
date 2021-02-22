@@ -6,6 +6,8 @@ import "./src/styles/normalize.css"
 // custom CSS styles
 import "./src/styles/style.css"
 
+import "./src/styles/iconfont.css"
+
 // Highlighting for code blocks
 // import "prismjs/themes/prism.css"
 import "prismjs/themes/prism-OKAIDIA.css"

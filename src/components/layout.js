@@ -16,13 +16,11 @@ const Layout = ({ location, title, children }) => {
   let defaultTheme = "light"
   let currentTheme = defaultTheme
 
-  console.log("localTheme", localTheme)
   if (localTheme) {
     if (localTheme === "dark" || localTheme === "light") {
       currentTheme = localTheme
     }
   } else if (window.matchMedia) {
-    console.log(1245665)
     let prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)")
       .matches
     if (prefersDarkMode) {
@@ -34,12 +32,25 @@ const Layout = ({ location, title, children }) => {
     // default light
     currentTheme = defaultTheme
   }
-  console.log(currentTheme)
 
   useEffect(() => {
     // Update the document title using the browser API
     document.documentElement.className = currentTheme + "-theme"
   })
+
+  function showLightTheme() {
+    // useEffect(() => {
+    document.documentElement.className = "light-theme"
+    localStorage.setItem("theme", "light")
+    // })
+  }
+
+  function showDarkTheme() {
+    // useEffect(() => {
+    document.documentElement.className = "dark-theme"
+    localStorage.setItem("theme", "dark")
+    // })
+  }
 
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
@@ -56,6 +67,8 @@ const Layout = ({ location, title, children }) => {
           <ListLink to="/about/">About</ListLink>
           <ListLink to="/tags/">Tags</ListLink>
           <ListLink to="/contact/">Contact</ListLink>
+          <span class="iconfont icon-light" onClick={showLightTheme}></span>
+          <span class="iconfont icon-dark" onClick={showDarkTheme}></span>
         </ul>
       </div>
     )

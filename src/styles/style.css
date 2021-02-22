@@ -58,7 +58,7 @@
   --color-text: #2e353f;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
-  --color-heading-black: #f4f5f9;
+  /* --color-heading-black: #f4f5f9; */
   --color-accent: #d1dce5;
 }
 
@@ -85,6 +85,11 @@
 :before {
   box-sizing: border-box;
 }
+
+/* html[theme="dark-mode"] {
+  filter: invert(1) hue-rotate(180deg);
+  transition: color 300ms, background-color 300ms;
+} */
 
 html {
   line-height: var(--lineHeight-normal);
