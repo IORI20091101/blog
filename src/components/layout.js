@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 
 const styles = {}
@@ -11,8 +11,19 @@ const ListLink = props => (
   </li>
 )
 
+const IconItem = props => (
+  <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+    <span>{props.children}</span>
+  </li>
+)
+
 const Layout = ({ location, title, children }) => {
-  let localTheme = localStorage.getItem("theme")
+  let localTheme = ""
+
+  if (typeof window !== "undefined") {
+    localTheme = localStorage.getItem("theme")
+  }
+
   let defaultTheme = "light"
   let currentTheme = defaultTheme
 
@@ -20,7 +31,7 @@ const Layout = ({ location, title, children }) => {
     if (localTheme === "dark" || localTheme === "light") {
       currentTheme = localTheme
     }
-  } else if (window.matchMedia) {
+  } else if (typeof window !== "undefined" && window.matchMedia) {
     let prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)")
       .matches
     if (prefersDarkMode) {
@@ -33,23 +44,23 @@ const Layout = ({ location, title, children }) => {
     currentTheme = defaultTheme
   }
 
+  const [theme, setTheme] = useState(currentTheme)
+
   useEffect(() => {
     // Update the document title using the browser API
     document.documentElement.className = currentTheme + "-theme"
   })
 
   function showLightTheme() {
-    // useEffect(() => {
     document.documentElement.className = "light-theme"
     localStorage.setItem("theme", "light")
-    // })
+    setTheme("light")
   }
 
   function showDarkTheme() {
-    // useEffect(() => {
     document.documentElement.className = "dark-theme"
     localStorage.setItem("theme", "dark")
-    // })
+    setTheme("dark")
   }
 
   const rootPath = `${__PATH_PREFIX__}/`
@@ -67,8 +78,30 @@ const Layout = ({ location, title, children }) => {
           <ListLink to="/about/">About</ListLink>
           <ListLink to="/tags/">Tags</ListLink>
           <ListLink to="/contact/">Contact</ListLink>
-          <span class="iconfont icon-light" onClick={showLightTheme}></span>
-          <span class="iconfont icon-dark" onClick={showDarkTheme}></span>
+
+          {theme === "dark" && (
+            <IconItem>
+              <span
+                role="presentation"
+                class="iconfont icon-light"
+                onClick={showLightTheme}
+                onKeyDown={showLightTheme}
+              ></span>
+            </IconItem>
+          )}
+          {theme === "light" && (
+            <IconItem>
+              <span
+                role="presentation"
+                class="iconfont icon-dark"
+                onClick={showDarkTheme}
+                onKeyDown={showDarkTheme}
+              ></span>
+            </IconItem>
+          )}
+          <IconItem>
+            <span role="presentation" class="iconfont icon-search"></span>
+          </IconItem>
         </ul>
       </div>
     )
